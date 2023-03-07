@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!--  Etiquetas meta  -->
+    <meta charset="UTF-8">
+
+    <!--  SEO meta  -->
+    <meta property="og:type" content="website">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GW Leaderboard Example">
+    <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <!--  Ajustes meta  -->
+    <meta property="og:locale" content="es-ES">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--  Hojas de estilo  -->
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./options.css">
+    <link rel="stylesheet" href="./base/style.css">
+    <link rel="stylesheet" href="./base/loader.css">
+
+    <!--  Scripts  -->
+    <script src="./script.js"></script>
+    <script src="./base/classes.js"></script>
+    <script src="./base/loader.js"></script>
+    <script src="./base/tools.js"></script>
+    <script src="./base/builders.js"></script>
+
+    <!--  Título  -->
+    <title>Catto • Dashboard</title>
+
+</head>
+
+<body id="body">
+    <script>
+        // Antes de cargar el resto de la página, carga el loader
+        showLoader();
+    </script>
+    <!-- Contenido general, este div es el que contiene todos los elementos de la página -->
+    <div class="content">
+        <div class="glassmorphism hidden">
+            <div class="window">
+                <h1>Inicia sesión</h1>
+                <h3>y empieza una experiencia cósmica</h3>
+                <div class="buttons">
+                    <button class="discord primary"
+                        onclick="window.location = 'https://discord.com/api/oauth2/authorize?client_id=1071826745105326120&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2F&response_type=token&scope=identify%20email%20guilds'">
+                        <svg>
+                            <g>
+                                <path
+                                    d="M26.0015 6.9529C24.0021 6.03845 21.8787 5.37198 19.6623 5C19.3833 5.48048 19.0733 6.13144 18.8563 6.64292C16.4989 6.30193 14.1585 6.30193 11.8336 6.64292C11.6166 6.13144 11.2911 5.48048 11.0276 5C8.79575 5.37198 6.67235 6.03845 4.6869 6.9529C0.672601 12.8736 -0.41235 18.6548 0.130124 24.3585C2.79599 26.2959 5.36889 27.4739 7.89682 28.2489C8.51679 27.4119 9.07477 26.5129 9.55525 25.5675C8.64079 25.2265 7.77283 24.808 6.93587 24.312C7.15286 24.1571 7.36986 23.9866 7.57135 23.8161C12.6241 26.1255 18.0969 26.1255 23.0876 23.8161C23.3046 23.9866 23.5061 24.1571 23.7231 24.312C22.8861 24.808 22.0182 25.2265 21.1037 25.5675C21.5842 26.5129 22.1422 27.4119 22.7621 28.2489C25.2885 27.4739 27.8769 26.2959 30.5288 24.3585C31.1952 17.7559 29.4733 12.0212 26.0015 6.9529ZM10.2527 20.8402C8.73376 20.8402 7.49382 19.4608 7.49382 17.7714C7.49382 16.082 8.70276 14.7025 10.2527 14.7025C11.7871 14.7025 13.0425 16.082 13.0115 17.7714C13.0115 19.4608 11.7871 20.8402 10.2527 20.8402ZM20.4373 20.8402C18.9183 20.8402 17.6768 19.4608 17.6768 17.7714C17.6768 16.082 18.8873 14.7025 20.4373 14.7025C21.9717 14.7025 23.2271 16.082 23.1961 17.7714C23.1961 19.4608 21.9872 20.8402 20.4373 20.8402Z">
+                                </path>
+                            </g>
+                        </svg>
+                        <p>Iniciar sesión</p>
+                    </button>
+                    <button class="secondary help"><svg viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm-1 17v-2h2v2h-2Zm3.17-6.83.9-.92c.57-.57.93-1.37.93-2.25 0-2.21-1.79-4-4-4S8 6.79 8 9h2c0-1.1.9-2 2-2s2 .9 2 2c0 .55-.22 1.05-.59 1.41l-1.24 1.26C11.45 12.4 11 13.4 11 14.5v.5h2c0-1.5.45-2.1 1.17-2.83Z"
+                                clip-rule="evenodd"></path>
+                        </svg></button>
+                </div>
+                <div id="msgList">
+                    <p class="advert">
+                        La dashboard de Catto se encuentra en fase de desarrollo
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard">
+            <div class="windows">
+            </div>
+            <div class="contextmenu" style="visibility: hidden;" id="ctm">
+                <p class="danger">Reportar servidor</p>
+            </div>
+            <div class="columns">
+                <div class="servers">
+                    <div id="settings" class="selected">
+                        <img src="./media/png/catto.png" id="cattopfp">
+                    </div>
+                    <div class="separator"></div>
+                    <div class="new">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="title">
+                        <p>Catto y tú</p>
+                    </div>
+                    <div class="items">
+                    </div>
+                </div>
+                <div class="profile">
+                    <div class="user" id="profile">
+                        <img src="" alt="" id="user_img">
+                        <p class="username" id="user_username">username</p>
+                        <p class="discriminator" id="user_discriminator">#0000</p>
+                    </div>
+                    <div class="ajustes"><svg viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M19.5 12c0 .34-.03.66-.07.98l2.11 1.65c.19.15.24.42.12.64l-2 3.46c-.12.22-.38.31-.61.22l-2.49-1c-.52.39-1.08.73-1.69.98l-.38 2.65c-.03.24-.24.42-.49.42h-4c-.25 0-.46-.18-.49-.42l-.38-2.65c-.61-.25-1.17-.58-1.69-.98l-2.49 1c-.22.08-.49 0-.61-.22l-2-3.46a.505.505 0 0 1 .12-.64l2.11-1.65A7.93 7.93 0 0 1 4.5 12c0-.33.03-.66.07-.98L2.46 9.37a.493.493 0 0 1-.12-.64l2-3.46c.12-.22.38-.31.61-.22l2.49 1c.52-.39 1.08-.73 1.69-.98l.38-2.65c.03-.24.24-.42.49-.42h4c.25 0 .46.18.49.42l.38 2.65c.61.25 1.17.58 1.69.98l2.49-1c.22-.08.49 0 .61.22l2 3.46c.12.22.07.49-.12.64l-2.11 1.65c.04.32.07.64.07.98Zm-11 0c0 1.93 1.57 3.5 3.5 3.5s3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5-3.5 1.57-3.5 3.5Z"
+                                clip-rule="evenodd"></path>
+                        </svg></div>
+                </div>
+                <div class="settings">
+                    <div class="error">
+                        <h1>Catto está siendo construído</h1>
+                        <p>Lamentamos informarle de que Catto se encuentra actualmente en fase de desarrollo y no es accesible para ningún usuario.</p>
+                        <p><small><i>Atentamente, el equipo de desarrollo de Catto.</i></small></p>
+                    </div>
+                </div>
+                <div class="overall help" id="help_window">
+                    <div class="return">
+                        <button id="return_help">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2Z"></path>
+                            </svg>
+                            Volver
+                        </button>
+                    </div>
+                    <div class="bg"></div>
+                    <h1>¿Necesitas ayuda?</h1>
+                    <p>Visita nuestra guía y encuentra instrucciones detalladas y recomendaciones de uso de Catto</p>
+                    <button class="primary">
+                        <svg viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M14.71 14h.79l4.99 5L19 20.49l-5-4.99v-.79l-.27-.28A6.471 6.471 0 0 1 9.5 16 6.5 6.5 0 1 1 16 9.5c0 1.61-.59 3.09-1.57 4.23l.28.27ZM5 9.5C5 11.99 7.01 14 9.5 14S14 11.99 14 9.5 11.99 5 9.5 5 5 7.01 5 9.5Z" clip-rule="evenodd"></path>
+                        </svg>
+                        Ir a la guía de Catto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,592 @@
+* {
+    font-family: whitney, Arial;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    background-color: #000;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 95vh;
+}
+
+/* --- VENTANA LOGIN --- */
+
+.glassmorphism {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(7.5px);
+    z-index: 900;
+    transition: all .5s;
+}
+
+.glassmorphism.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.window {
+    top: 200px;
+    background-color: #1f1f1f;
+    width: 500px;
+    padding: 30px 15px;
+    border-radius: 20px;
+}
+
+.window p#catto {
+    position: absolute;
+    color: #fff;
+    left: 20px;
+    top: 75px;
+    text-decoration: underline 8px;
+    font-size: 152px;
+    font-weight: bold;
+}
+.window p#dashboard {
+    position: absolute;
+    color: #fff;
+    left: 20px;
+    top: 320px;
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.window h1, h3 {
+    width: 100%;
+    margin: 5px 0px;
+    text-align: center;
+    color: #fff;
+}
+
+.window h1 {
+    font-size: 52px;
+}
+
+.window h3 {
+    font-size: 25px;
+}
+
+.window .buttons {
+    margin: 50px 0px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+.window button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 5px;
+    outline: none;
+    border-radius: 29px;
+    cursor: pointer;
+    transition: all 0.3s;
+    overflow: hidden;
+    border: none;
+}
+
+.window button.disabled {
+    cursor: not-allowed;
+}
+
+.window button.discord {
+    padding: 5px 50px;
+    font-size: 15px;
+    margin: 0px;
+    font-weight: bold;
+}
+
+.window button.primary {
+    background-color: #5865f2;
+}
+
+.window button.secondary {
+    background-color: #fff;
+}
+
+.window button.primary:hover {
+    background-color: #4f58bf;
+}
+
+.window .discord svg {
+    height: 35px;
+    width: 50px;
+    fill: #fff;
+    transition: all 0.3s;
+}
+
+
+.window .help svg {
+    height: 35px;
+    width: 50px;
+    fill: #1f1f1f;
+    transition: all 0.3s;
+}
+
+
+.window button.discord:hover svg {
+    opacity: .5;
+    transform: scale(2.5) rotateZ(-15deg) translateX(0px);
+}
+
+.window button.help:hover svg {
+    transform: rotateZ(360deg);
+}
+
+.window button.disabled:hover {
+    background-color: #ed4245;
+}
+
+.window p.advert {
+    background-color: #fee52850;
+    border-radius: 10px;
+    padding: 10px;
+    border: solid 2px #fee528;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* --- DISPOSICIÓN GENERAL --- */
+
+.windows {
+    position: absolute;
+}
+
+.columns {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    z-index: 300;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+
+
+
+
+/* --- LISTA DE SERVIDORES --- */
+
+.servers {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 50px;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: #1e1f22;
+    padding: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.servers > div {
+    overflow: hidden;
+    position: relative;
+    min-height: 50px;
+    min-width: 50px;
+    max-height: 50px;
+    max-width: 50px;
+    border-radius: 30px;
+    transition: all 0.3s;
+    background-color: #35373c;
+}
+
+.servers div:hover, .servers div.selected {
+    border-radius: 17.5px;
+}
+
+.servers div img {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+
+#cattopfp {
+    background-color: #9d00ff;
+}
+
+.servers div.separator {
+    height: 3px;
+    width: 50%;
+    min-height: 3px;
+    min-width: 10px;
+    max-height: 3px;
+    position: relative;
+    left: 25%;
+    border-radius: 1.5px;
+    background-color: #35363c;
+}
+
+.servers div.new {
+    background-color: #3a3a3a;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.servers div.new svg {
+    height: 40px;
+    fill: #23a55a;
+}
+
+.servers div.new:hover {
+    background-color: #23a55a;
+}
+
+.servers div.new:hover svg {
+    height: 40px;
+    fill: #fff;
+}
+
+
+
+
+
+/* --- OPTIONS --- */
+
+.options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 70px;
+    top: 0px;
+    bottom: 60px;
+    gap: 5px;
+    width: 270px;
+    background-color: #2b2d31;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.options > div.title {
+    color: #fff;
+    font-size: 20px;
+    background-color: #2b2d31;
+    border-bottom: solid 3px #252525;
+    margin: -10px -10px 0px -10px;
+    border-radius: 0px;
+    padding: 0px 20px;
+    cursor: default;
+}
+
+.options > div.items {
+    overflow-y: scroll;
+    padding: 10px 0px;
+}
+
+.options > div > div {
+    width: calc(100% -20px);
+    height: 30px;
+    /*overflow: hidden;*/
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #bbb;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+.options > div > div.disabled {
+    opacity: .3;
+    cursor: default;
+}
+
+.options > div > div.separator {
+    max-height: 3px;
+    width: 50%;
+    left: 25%;
+    position: relative;
+    background-color: #35363c;
+    border-radius: 1.5px;
+    cursor: default;
+    padding: 0px;
+    margin: 10px 0px;
+}
+
+.options > div > div.separator:hover {
+    background-color: #35363c;
+}
+
+.options > div > div > svg {
+    height: 30px;
+    fill: #bbb;
+}
+
+.options > div > div:hover, div.selected {
+    color: #ddd;
+    background-color: #35373c;
+}
+
+.options > div > div:hover > svg, div.selected > svg {
+    fill: #ddd;
+}
+
+/* --- PROFILE SETTINGS --- */
+
+.profile {
+    position: absolute;
+    left: 70px;
+    bottom: 0px;
+    height: 50px;
+    background-color: #232428;
+    width: 280px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    gap: 5px;
+    justify-content: space-between;
+}
+
+.user {
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    align-items: center;
+    gap: 2px;
+    overflow: hidden;
+}
+
+.username {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.discriminator {
+    font-size: 20px;
+    color: #aaa;
+}
+
+.user img {
+    height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    width: 40px;
+    background-color: #000;
+    border-radius: 20px;
+    margin-right: 15px;
+    pointer-events: none;
+}
+
+.ajustes {
+    gap: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    min-width: 40px;
+}
+
+.ajustes svg {
+    width: 25px;
+    height: 25px;
+    fill: #e0e1e5;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ajustes svg:hover {
+    fill: #e0e1e5;
+    background-color: #393b41;
+}
+
+
+
+/* --- AJUSTES --- */
+
+.settings {
+    position: absolute;
+    left: 360px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: #313338;
+}
+
+
+
+
+/* --- CONTEXTMENU --- */
+
+div.contextmenu {
+    position: absolute;
+    padding: 5px 10px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    background-color: #1e1f22;
+    border-radius: 10px;
+    min-width: 200px;
+}
+
+.contextmenu p {
+    margin: 5px 0px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.contextmenu p:hover {
+    border-radius: 5px;
+}
+
+.contextmenu p.secondary {
+    color: #fff;
+}
+
+.contextmenu p.secondary :hover{
+    color: #fff;
+    background-color: #fff3;
+}
+
+.contextmenu p.primary {
+    color: #5865f2;
+}
+
+.contextmenu p.primary:hover {
+    color: #fff;
+    background-color: #5865f2;
+}
+
+.contextmenu p.danger {
+    color: #ed4245;
+}
+
+.contextmenu p.danger:hover {
+    color: #fff;
+    background-color: #ed4245;
+}
+
+/* OVER ALL WINDOW */
+
+div.overall {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #313338;
+    z-index: 100;
+    transition: all 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(.9);
+}
+
+div.overall div.return {
+    position: fixed;
+    z-index: 150;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+div.overall div.return button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    align-items: center;
+    height: 50px;
+    color: #fff;
+    font-size: 20px;
+    gap: 10px;
+    border-radius: 7.5px;
+    width: 150px;
+    justify-content: center;
+    transition: all 0.1s;
+    opacity: .6;
+}
+
+div.overall div.return button:hover {
+    background-color: #fff3;
+    border: none;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    align-items: center;
+    height: 50px;
+    opacity: 1;
+}
+
+div.overall div.return button svg {
+    fill: #fff;
+    height: 30px;
+}
+
+/* ERROR */
+
+.settings .error {
+    display: flex;
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    right: 10%;
+    top: 30%;
+    flex-direction: column;
+}
+
+.settings .error h1 {
+    color: #fff;
+    background-color: #ed4245;
+    padding: 10px;
+    border-radius: 10px;
+    padding-left: 40px;
+}
+
+.settings .error p {
+    padding: 0px;
+    color: #fff;
+    font-size: 24px;
+}

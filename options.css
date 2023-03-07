@@ -1,0 +1,71 @@
+/* HELP */
+
+.overall.help {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+
+.overall.help .bg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 50%;
+    background: linear-gradient(to bottom, #000a, transparent);
+}
+
+.overall.help h1 {
+    color: #fff;
+    z-index: 80;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 10%;
+    text-align: center;
+    font-size: 52px;
+}
+
+.overall.help p {
+    color: #fff;
+    z-index: 80;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: calc(10% + 100px);
+    text-align: center;
+    font-size: 24px;
+}
+
+.overall.help button.primary {
+    height: 50px;
+    z-index: 80;
+    position: absolute;
+    left: calc(50% - 125px);
+    top: 40%;
+    background-color: #5865f2;
+    width: 250px;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .3s;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+.overall.help button.primary:hover {
+    background-color: #424cb7;
+}
+
+.overall.help button.primary svg {
+    height: 30px;
+    fill: #fff;
+}

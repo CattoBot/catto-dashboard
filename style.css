@@ -282,7 +282,7 @@ body {
 
 /* --- OPTIONS --- */
 
-.options {
+div.columns > div.options {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -296,23 +296,34 @@ body {
     padding: 10px;
 }
 
-.options > div.title {
+div.columns > div.options > div.title {
     color: #fff;
     font-size: 20px;
+    max-height: 55px;
+    min-height: 55px;
     background-color: #2b2d31;
     border-bottom: solid 3px #252525;
-    margin: -10px -10px 0px -10px;
+    margin: -20px -10px 0px -10px;
     border-radius: 0px;
     padding: 0px 20px;
     cursor: default;
+    overflow: hidden;
 }
 
-.options > div.items {
+div.columns > div.options > div.title p {
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
+    height: 1.2em;
+    white-space: nowrap;
+}
+
+div.columns > div.options > div.items {
     overflow-y: scroll;
     padding: 10px 0px;
 }
 
-.options > div > div {
+div.columns > div.options > div > div {
     width: calc(100% -20px);
     height: 30px;
     /*overflow: hidden;*/
@@ -326,12 +337,26 @@ body {
     gap: 10px;
 }
 
-.options > div > div.disabled {
+div.columns > div.options > div > div.adv {
+    color: #ed4245;
+    text-align: center;
+    cursor: help;
+    opacity: .5;
+    transition: all 0.3s;
+}
+
+div.columns > div.options > div > div.adv:hover {
+    background-color: transparent;
+    opacity: 1;
+    color: #ed4245;
+}
+
+div.columns > div.options > div > div.disabled {
     opacity: .3;
     cursor: default;
 }
 
-.options > div > div.separator {
+div.columns > div.options > div > div.separator {
     max-height: 3px;
     width: 50%;
     left: 25%;
@@ -343,21 +368,21 @@ body {
     margin: 10px 0px;
 }
 
-.options > div > div.separator:hover {
+div.columns > div.options > div > div.separator:hover {
     background-color: #35363c;
 }
 
-.options > div > div > svg {
+div.columns > div.options > div > div > svg {
     height: 30px;
     fill: #bbb;
 }
 
-.options > div > div:hover, div.selected {
+div.columns > div.options > div > div:hover, div.selected {
     color: #ddd;
     background-color: #35373c;
 }
 
-.options > div > div:hover > svg, div.selected > svg {
+div.columns > div.options > div > div:hover > svg, div.selected > svg {
     fill: #ddd;
 }
 
@@ -452,41 +477,48 @@ body {
 
 div.contextmenu {
     position: absolute;
-    padding: 5px 10px;
+    padding: 2.5px 7.5px;
     z-index: 999;
     display: flex;
     flex-direction: column;
-    background-color: #1e1f22;
-    border-radius: 10px;
-    min-width: 200px;
+    background-color: #111214;
+    border-radius: 5px;
+    min-width: 250px;
+}
+
+.contextmenu hr {
+    border: solid 1px #313131;
+    width: 100%;
+    margin: 0px;
 }
 
 .contextmenu p {
+    font-size: 15px;
     margin: 5px 0px;
-    padding: 5px;
+    padding: 7.5px 15px;
     cursor: pointer;
 }
 
 .contextmenu p:hover {
-    border-radius: 5px;
+    border-radius: 2.5px;
 }
 
 .contextmenu p.secondary {
-    color: #fff;
+    color: #bbb;
 }
 
-.contextmenu p.secondary :hover{
+.contextmenu p.secondary:hover{
     color: #fff;
-    background-color: #fff3;
+    background-color: #6671f4;
 }
 
 .contextmenu p.primary {
-    color: #5865f2;
+    color: #6671f4;
 }
 
 .contextmenu p.primary:hover {
     color: #fff;
-    background-color: #5865f2;
+    background-color: #6671f4;
 }
 
 .contextmenu p.danger {
@@ -509,7 +541,7 @@ div.overall {
     right: 0px;
     bottom: 0px;
     background-color: #313338;
-    z-index: 100;
+    z-index: 500;
     transition: all 0.3s;
     opacity: 0;
     visibility: hidden;
@@ -589,4 +621,49 @@ div.overall div.return button svg {
     padding: 0px;
     color: #fff;
     font-size: 24px;
+}
+
+/* OPTIONS */
+
+.dashboard div.settings > div.header {
+    width: 100%;
+    background-color: #313338;
+    min-height: 55px;
+    max-height: 55px;
+    top: 0px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    color: #fff;
+    font-size: 20px;
+    border-bottom: solid 3px #252525;
+    margin: -10px -10px 0px 0px;
+    border-radius: 0px;
+    padding: 0px 20px;
+    cursor: default;
+    z-index: 180;
+}
+
+.dashboard div.settings > div.header svg {
+    position: absolute;
+    height: 25px;
+    fill: #aaa;
+    top: 20px;
+}
+
+.dashboard div.settings > div.header p {
+    position: absolute;
+    top: 0px;
+    left: 60px;
+}
+
+.dashboard div.settings > div.body {
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 20px;
 }

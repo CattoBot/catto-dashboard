@@ -25,7 +25,7 @@ class user {
                 name: guild.name,
                 icon: guild.icon,
                 owner: guild.owner,
-                perms: guild.permssions,
+                permissions: guild.permissions,
                 features: typeof guild.features==Array?guild.features.join(" "):guild.features
             })
         })

@@ -45,11 +45,11 @@ const indexedDB = {
                     { name: "name", unique: false },
                     { name: "icon", unique: false },
                     { name: "owner", unique: false },
-                    { name: "perms", unique: false },
+                    { name: "permissions", unique: false },
                     { name: "features", unique: false }
                 ])
                 indexedDB.addsheet("data", [
-                    { name: "value", unique: false}
+                    { name: "value", unique: false }
                 ])
             };
         })
@@ -71,7 +71,7 @@ const indexedDB = {
         transaction.onerror = function () { console.error("Transacción fallida"); };
     },
     displayData(sheet) {
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             try {
                 let toShow = []
                 let objectStore = indexedDB.db.transaction(sheet).objectStore(sheet);
@@ -112,17 +112,17 @@ const indexedDB = {
         })
     },
     async listLength(sheet, min, max) {
-        return new Promise(async function(resolve, reject) {
+        return new Promise(async function (resolve, reject) {
             if (!sheet) return console.error("Tabla no especificada")
             const list = await indexedDB.displayData(sheet)
             await sleep(500)
             if (!min && !max) {
                 resolve(list.length)
-            } else if (min>0 && max>=0 && list.length>=min && list.length<=max){
+            } else if (min > 0 && max >= 0 && list.length >= min && list.length <= max) {
                 resolve(true)
-            } else if (min>=0 && list.length>=min && !max){
+            } else if (min >= 0 && list.length >= min && !max) {
                 resolve(true)
-            } else if (max>=0 && list.length<=max && !min) {
+            } else if (max >= 0 && list.length <= max && !min) {
                 resolve(true)
             } else {
                 resolve(false)
@@ -140,8 +140,10 @@ const indexedDB = {
 }
 
 async function require(url, canonical) {
-    var response = await fetch(`${canonical ? `${window.location.href.split("/")[0]}/${url}` : `${url}`}`);
-    if (window.location.href.startsWith("http://127.0.0.1:5501/")) response = await fetch(`${canonical ? `http://127.0.0.1:5501/${url}` : `${url}`}`);
-    const json = await response.json();
-    return json
+    return new Promise(async resolve => {
+        var response = await fetch(`${canonical ? `${window.location.href.split("/")[0]}/${url}` : `${url}`}`);
+        if (window.location.href.startsWith("http://127.0.0.1:5501/")) response = await fetch(`${canonical ? `http://127.0.0.1:5501/${url}` : `${url}`}`);
+        const json = await response.json();
+        resolve(json)
+    })
 }

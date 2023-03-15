@@ -91,11 +91,17 @@ async function goPage(page) {
     // Primero, guardamos la ID de la página que queremos visitar
     data.establecer("page", page)
 
+
+    var type = "server"
+    var server = data.obtener("server")
+    if (server=="settings") type = "settings"
+    build.pages(type, page)
+
     // Ahora, si hay alguna página ya marcada, la desmarcamos, y
     // después marcamos la actual.
     try {
         document.querySelector(`.options .selected`).classList.remove("selected")
-    } catch {} finally {
+    } catch { } finally {
         document.getElementById(page).classList.add("selected")
     }
 }
@@ -109,21 +115,21 @@ async function goServer(server) {
 
     // Desmarcamos el servidor que está marcado actualmente
     document.querySelector(`.servers .selected`).classList.remove("selected")
-    
+
     // Guardamos la información del nuevo servidor
     data.establecer("server", server)
 
     // Si este servidor, no es en realidad el apartado de ajustes,
     // buscamos su nombre y lo mostramos dónde corresponde
-    if (server!="settings") { data.establecer("server_name", document.getElementById(server+"_icon").alt) }
-    
+    if (server != "settings") { data.establecer("server_name", document.getElementById(server + "_icon").alt) }
+
     // Eliminamos la información a cerca de la página anterior que se
     // estuviese viendo
     data.eliminar("page")
 
     // Marcamos el nuevo servidor como seleccionado
     document.getElementById(data.obtener("server")).classList.add("selected")
-    
+
     // Actualizamos las opciones del servidor
     await build.options(data.obtener("server") == "settings" ? "settings" : "server")
 }
@@ -136,7 +142,7 @@ async function goServer(server) {
 function startWindows() {
 
     // Función que nos permite cerrar la ventana de ayuda
-    document.getElementById("return_help").addEventListener("click", async function() {
+    document.getElementById("return_help").addEventListener("click", async function () {
         data.eliminar("page")
         document.querySelector(`.options .selected`).classList.remove("selected")
         document.getElementById("help_window").style.opacity = "0"

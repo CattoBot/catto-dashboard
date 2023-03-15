@@ -1,0 +1,348 @@
+.dashboard div.settings > div.body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+div.body div.top {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+div.body div.personalRank {
+    color: #fff;
+    padding: 10px;
+    background-color: #2a2c31;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    min-width: 350px;
+}
+
+div.body div.personalRank > p {
+    margin: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+div.body div.personalRank div.user {
+    background-color: #1f2024;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+div.body div.personalRank div.user > p.rank {
+    margin: 10px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 18px;
+}
+
+div.body div.personalRank div.user > p.rank::before {
+    content: "#";
+}
+
+div.body div.personalRank div.user > p.username {
+    margin: 10px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 18px;
+}
+
+div.body a.promotion {
+    background: linear-gradient(122deg, rgba(142,0,209,1) 0%, rgba(203,0,205,1) 49%, rgba(219,0,90,1) 100%);
+    padding: 20px;
+    box-shadow: 0px 10px 15px -10px #000;
+    border-radius: 10px;
+    width: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    min-width: 275px;
+    transition: all 0.3s;
+    overflow: hidden;
+}
+
+div.body a.promotion:hover {
+    transform: scale(1.01);
+    box-shadow: 0px 5px 25px -10px #000;
+}
+
+div.body a.promotion::before {
+    opacity: 0;
+}
+
+div.body a.promotion:hover::before {
+    content: '';
+    top: 0px;
+    bottom: 0px;
+    width: 5px;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px 15px #fff;
+    transform: rotateZ(20deg) scale(2.5) translateX(-150px);
+    position: absolute;
+    animation: bright 1.8s;
+}
+
+@-webkit-keyframes bright {
+    0% {
+        opacity: 0;
+        transform: rotateZ(20deg) scale(1.5) translateX(-150px) translateY(75px);
+    }
+    30% {
+        opacity: .3;
+    }
+    70% {
+        opacity: .3;
+    }
+    100% {
+        opacity: 0;
+        transform: rotateZ(20deg) scale(1.5) translateX(500px) translateY(-175px);
+    }
+}
+
+@keyframes bright {
+    0% {
+        opacity: 0;
+        transform: rotateZ(20deg) scale(1.5) translateX(-150px) translateY(75px);
+    }
+    30% {
+        opacity: .3;
+    }
+    70% {
+        opacity: .3;
+    }
+    100% {
+        opacity: 0;
+        transform: rotateZ(20deg) scale(1.5) translateX(500px) translateY(-200px);
+    }
+}
+
+div.body a.promotion h3 {
+    font-size: 24px;
+    font-weight: bold;
+    word-spacing: 4px;
+    text-transform: uppercase;
+    margin: 0px;
+}
+
+div.body a.promotion p {
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin: 0px;
+}
+
+a.promotion {
+    text-decoration: none;
+}
+
+div.lb {
+    height: calc(100vh - 240px);
+    max-height: calc(100vh - 240px);
+    border-radius: 10px;
+}
+
+div.lb > div.header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    border-radius: 15px 15px 0px 0px;
+    color: #888;
+    border-bottom: 2px solid #888;
+}
+
+div.lb > div.header > p {
+    text-align: center;
+}
+
+div.lb .width-10 {
+    width: 10%;
+}
+
+div.lb .width-20 {
+    width: 20%;
+}
+
+div.lb .width-30 {
+    width: 30%;
+}
+
+div.lb .width-40 {
+    width: 40%;
+}
+
+div.lb .width-50 {
+    width: 50%;
+}
+
+div.lb .width-60 {
+    width: 60%;
+}
+
+div.lb .width-70 {
+    width: 70%;
+}
+
+div.lb .width-80 {
+    width: 80%;
+}
+
+div.lb .width-90 {
+    width: 90%;
+}
+
+div.lb .width-100 {
+    width: 100%;
+}
+
+div.lb > div.users {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: calc(100vh - 290px);
+}
+
+div.lb > div.users > div.user {
+    border-bottom: 2px solid #444;
+    height: 75px;
+}
+
+div.lb > div.users > div.user:first-child {
+    height: 75px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 5px;
+    background: linear-gradient(122deg, rgba(255,182,0,1) 0%, rgba(255,225,0,1) 49%, rgba(255,169,0,1) 100%);
+}
+
+div.lb > div.users > div.user:nth-child(2) {
+    height: 75px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 5px;
+    background: linear-gradient(122deg, rgba(190, 190, 190, 0.25) 0%, rgb(219, 219, 219, 0.5) 49%, rgb(130, 130, 130, 0.25) 100%);
+}
+
+div.lb > div.users > div.user:nth-child(3) {
+    height: 75px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 5px;
+    background: linear-gradient(122deg, rgb(184, 89, 0, 0.25) 0%, rgba(219, 114, 16, 0.5) 49%, rgb(184, 89, 0, 0.25) 100%);
+}
+
+div.lb > div.users > div.user > div.options {
+    visibility: hidden;
+}
+
+div.lb > div.users > div.user > div.options > svg {
+    height: 30px;
+    fill: #888;
+    cursor: pointer;
+}
+
+div.lb > div.users > div.user > div.options > svg:hover {
+    height: 30px;
+    fill: #ccc;
+    cursor: pointer;
+}
+
+div.lb > div.users > div.user:first-child > div.options > svg {
+    fill: #000;
+}
+
+div.lb > div.users > div.user:first-child > div.options > svg:hover {
+    fill: #000;
+}
+
+div.lb > div.users > div.user:nth-child(2) > div.options > svg {
+    fill: #000;
+}
+
+div.lb > div.users > div.user:nth-child(2) > div.options > svg:hover {
+    fill: #000;
+}
+
+div.lb > div.users > div.user:hover > div.options {
+    visibility: visible;
+}
+
+div.lb > div.users > div.user:last-child {
+    border: none;
+}
+
+div.lb > div.users > div.user > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+div.lb > div.users > div.user > div.number::before {
+    content: '#';
+}
+
+div.lb > div.users > div.user > div.name > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+div.lb > div.users > div.user > div.name > div > p:first-child {
+    font-size: 22px;
+    position: absolute;
+    top: -40px;
+    transition: all 0.3s;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
+    height: 1.2em;
+    white-space: nowrap;
+}
+
+div.lb > div.users > div.user:hover > div.name > div > p:first-child {
+    top: -50px;
+}
+
+div.lb > div.users > div.user:first-child > * {
+    color: #000;
+}
+
+div.lb > div.users > div.user:nth-child(2) > * {
+    color: #000;
+}
+
+div.lb > div.users > div.user > div.name > div > p:not(:first-child) {
+    font-size: 15px;
+    position: absolute;
+    color: #888;
+    top: 5px;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+div.lb > div.users > div.user:first-child > div.name > div > p:not(:first-child) {
+    color: #000;
+}
+
+div.lb > div.users > div.user:nth-child(2) > div.name > div > p:not(:first-child) {
+    color: #000;
+}
+
+div.lb > div.users > div.user:hover > div.name > div > p:not(:first-child) {
+    font-size: 15px;
+    position: absolute;
+    top: -10px;
+    opacity: 1;
+}
+
+div.lb > div.users > div.user > div.name > div > p:not(:first-child)::before {
+    content: '#';
+}

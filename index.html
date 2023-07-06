@@ -44,25 +44,31 @@
   <div class="content">
     <div class="glassmorphism hidden">
       <div class="window">
-        <h1>Inicia sesión</h1>
-        <h3>y empieza una experiencia cósmica</h3>
-        <div class="buttons">
-          <button class="discord primary"
-            onclick="window.location = 'https://discord.com/api/oauth2/authorize?client_id=1071826745105326120&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2F&response_type=token&scope=identify%20email%20guilds'">
-            <svg>
-              <g>
-                <path
-                  d="M26.0015 6.9529C24.0021 6.03845 21.8787 5.37198 19.6623 5C19.3833 5.48048 19.0733 6.13144 18.8563 6.64292C16.4989 6.30193 14.1585 6.30193 11.8336 6.64292C11.6166 6.13144 11.2911 5.48048 11.0276 5C8.79575 5.37198 6.67235 6.03845 4.6869 6.9529C0.672601 12.8736 -0.41235 18.6548 0.130124 24.3585C2.79599 26.2959 5.36889 27.4739 7.89682 28.2489C8.51679 27.4119 9.07477 26.5129 9.55525 25.5675C8.64079 25.2265 7.77283 24.808 6.93587 24.312C7.15286 24.1571 7.36986 23.9866 7.57135 23.8161C12.6241 26.1255 18.0969 26.1255 23.0876 23.8161C23.3046 23.9866 23.5061 24.1571 23.7231 24.312C22.8861 24.808 22.0182 25.2265 21.1037 25.5675C21.5842 26.5129 22.1422 27.4119 22.7621 28.2489C25.2885 27.4739 27.8769 26.2959 30.5288 24.3585C31.1952 17.7559 29.4733 12.0212 26.0015 6.9529ZM10.2527 20.8402C8.73376 20.8402 7.49382 19.4608 7.49382 17.7714C7.49382 16.082 8.70276 14.7025 10.2527 14.7025C11.7871 14.7025 13.0425 16.082 13.0115 17.7714C13.0115 19.4608 11.7871 20.8402 10.2527 20.8402ZM20.4373 20.8402C18.9183 20.8402 17.6768 19.4608 17.6768 17.7714C17.6768 16.082 18.8873 14.7025 20.4373 14.7025C21.9717 14.7025 23.2271 16.082 23.1961 17.7714C23.1961 19.4608 21.9872 20.8402 20.4373 20.8402Z">
-                </path>
-              </g>
-            </svg>
-            <p>Iniciar sesión</p>
-          </button>
-          <button class="secondary help"><svg viewBox="0 0 24 24">
-              <path fill-rule="evenodd"
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm-1 17v-2h2v2h-2Zm3.17-6.83.9-.92c.57-.57.93-1.37.93-2.25 0-2.21-1.79-4-4-4S8 6.79 8 9h2c0-1.1.9-2 2-2s2 .9 2 2c0 .55-.22 1.05-.59 1.41l-1.24 1.26C11.45 12.4 11 13.4 11 14.5v.5h2c0-1.5.45-2.1 1.17-2.83Z"
-                clip-rule="evenodd"></path>
-            </svg></button>
+        <div class="columns">
+          <div>
+            <h1>Inicia sesión</h1>
+            <h3>y empieza una experiencia cósmica</h3>
+          </div>
+          <div>
+            <div class="buttons">
+              <button class="discord primary"
+                onclick="window.location = 'https://discord.com/api/oauth2/authorize?client_id=1071826745105326120&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2F&response_type=token&scope=identify%20email%20guilds'">
+                <svg>
+                  <g>
+                    <path
+                      d="M26.0015 6.9529C24.0021 6.03845 21.8787 5.37198 19.6623 5C19.3833 5.48048 19.0733 6.13144 18.8563 6.64292C16.4989 6.30193 14.1585 6.30193 11.8336 6.64292C11.6166 6.13144 11.2911 5.48048 11.0276 5C8.79575 5.37198 6.67235 6.03845 4.6869 6.9529C0.672601 12.8736 -0.41235 18.6548 0.130124 24.3585C2.79599 26.2959 5.36889 27.4739 7.89682 28.2489C8.51679 27.4119 9.07477 26.5129 9.55525 25.5675C8.64079 25.2265 7.77283 24.808 6.93587 24.312C7.15286 24.1571 7.36986 23.9866 7.57135 23.8161C12.6241 26.1255 18.0969 26.1255 23.0876 23.8161C23.3046 23.9866 23.5061 24.1571 23.7231 24.312C22.8861 24.808 22.0182 25.2265 21.1037 25.5675C21.5842 26.5129 22.1422 27.4119 22.7621 28.2489C25.2885 27.4739 27.8769 26.2959 30.5288 24.3585C31.1952 17.7559 29.4733 12.0212 26.0015 6.9529ZM10.2527 20.8402C8.73376 20.8402 7.49382 19.4608 7.49382 17.7714C7.49382 16.082 8.70276 14.7025 10.2527 14.7025C11.7871 14.7025 13.0425 16.082 13.0115 17.7714C13.0115 19.4608 11.7871 20.8402 10.2527 20.8402ZM20.4373 20.8402C18.9183 20.8402 17.6768 19.4608 17.6768 17.7714C17.6768 16.082 18.8873 14.7025 20.4373 14.7025C21.9717 14.7025 23.2271 16.082 23.1961 17.7714C23.1961 19.4608 21.9872 20.8402 20.4373 20.8402Z">
+                    </path>
+                  </g>
+                </svg>
+                <p>Iniciar sesión</p>
+              </button>
+              <button class="secondary help"><svg viewBox="0 0 24 24">
+                  <path fill-rule="evenodd"
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm-1 17v-2h2v2h-2Zm3.17-6.83.9-.92c.57-.57.93-1.37.93-2.25 0-2.21-1.79-4-4-4S8 6.79 8 9h2c0-1.1.9-2 2-2s2 .9 2 2c0 .55-.22 1.05-.59 1.41l-1.24 1.26C11.45 12.4 11 13.4 11 14.5v.5h2c0-1.5.45-2.1 1.17-2.83Z"
+                    clip-rule="evenodd"></path>
+                </svg></button>
+            </div>
+          </div>
         </div>
         <div id="msgList">
           <p class="advert">
@@ -73,16 +79,16 @@
     </div>
     <div class="dashboard">
       <div class="windows"></div>
-      <div class="contextmenu" style="visibility: hidden;" id="ctm"></div>
       <div class="columns">
         <div class="servers">
           <div id="settings" class="selected">
             <img src="./media/png/catto.png" id="cattopfp">
           </div>
           <div class="separator"></div>
-          <div class="new">
+          <div class="reload" onclick="window.location.reload()">
             <svg viewBox="0 0 24 24">
-              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"></path>
+              <path d="M16.519 9.348h4.5v-4.5"></path>
+              <path d="M17.831 17.831a8.25 8.25 0 1 1 0-11.662l3.188 3.178"></path>
             </svg>
           </div>
         </div>
@@ -113,7 +119,64 @@
               ningún usuario.</p>
             <p><small><i>Atentamente, el equipo de desarrollo de Catto.</i></small></p>
           </div>
-          -->
+        -->
+          <div class="header">
+            <svg viewBox="0 0 24 24">
+              <path d="M16 11V3H8v6H2v12h20V11h-6Zm-6-6h4v14h-4V5Zm-6 6h4v8H4v-8Zm16 8h-4v-6h4v6Z"></path>
+            </svg>
+            <p>Leaderboard</p>
+          </div>
+          <div class="body">
+            <link rel="stylesheet" href="./pages/style/leaderboard.css">
+            <script src="./pages/script/leaderboard.js"></script>
+            <div class="top">
+              <div class="personalRank">
+                <p>Tu rank</p>
+                <div class="user">
+                  <p class="rank">1</p>
+                  <img src="https://cdn.discordapp.com/avatars/643575943289634836/6c554e3e9405c0ab83ab105f5c09e83b.jpg">
+                  <p class="username">gacarbla</p>
+                </div>
+              </div>
+              <a href="" class="promotion">
+                <h3>¡ Vota por Catto !</h3>
+                <p>Y consigue un 10% más de XP por 12 horas</p>
+              </a>
+            </div>
+            <div class="lb">
+              <div class="header">
+                <p class="number width-10">Rank</p>
+                <p class="name width-40">Usuario</p>
+                <p class="xp width-10">Voice xp</p>
+                <p class="level width-10">Voice lvl</p>
+                <p class="xp width-10">Text xp</p>
+                <p class="level width-10">Text lvl</p>
+                <p class="options width-10"></p>
+              </div>
+              <div class="users">
+                <div class="user">
+                  <div class="number width-10">1</div>
+                  <div class="name width-40">
+                    <img src="https://cdn.discordapp.com/avatars/643575943289634836/6c554e3e9405c0ab83ab105f5c09e83b.jpg">
+                    <div class="width-70">
+                      <p>gacarbla</p>
+                      <p>2975</p>
+                    </div>
+                  </div>
+                  <div class="xp width-10">2.3K</div>
+                  <div class="level width-10">35</div>
+                  <div class="xp width-10">-</div>
+                  <div class="level width-10">-</div>
+                  <div class="options width-10">
+                    <svg viewBox="0 0 24 24" id="643575943289634836_options">
+                      <path fill-rule="evenodd" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2Zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2Zm-2 8c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2Z" clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script>leaderboard.user.options()</script>
+          </div>
         </div>
         <div class="overall help" id="help_window">
           <div class="return">

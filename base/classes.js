@@ -4,10 +4,10 @@ class user {
         this.guilds = guilds
     }
     save() {
-        if (indexedDB.has("data", `${this.data.id}`)) {
-            indexedDB.deleteItem("data", `${this.data.id}`)
+        if (myIndexedDB.has("data", `${this.data.id}`)) {
+            myIndexedDB.deleteItem("data", `${this.data.id}`)
         }
-        indexedDB.addElement("data", {
+        myIndexedDB.addElement("data", {
             id: this.data.id,
             token: this.data.token,
             expiration: this.data.expiration,
@@ -17,10 +17,10 @@ class user {
             mail: this.data.mail
         })
         this.guilds.forEach(async guild => {
-            if (await indexedDB.has("guilds", guild.id)) {
-                indexedDB.deleteItem("guilds", guild.id)
+            if (await myIndexedDB.has("guilds", guild.id)) {
+                myIndexedDB.deleteItem("guilds", guild.id)
             }
-            indexedDB.addElement("guilds", {
+            myIndexedDB.addElement("guilds", {
                 id: guild.id,
                 name: guild.name,
                 icon: guild.icon,
@@ -32,8 +32,8 @@ class user {
     }
     async logOut() {
         showLoader()
-        indexedDB.reset("data")
-        indexedDB.reset("guilds")
+        myIndexedDB.reset("data")
+        myIndexedDB.reset("guilds")
         await sleep(2500)
         window.location = window.location.href.split("#")[0]
     }
@@ -77,6 +77,7 @@ class login {
                 },
             }).then(result => result.json())
                 .then(async response => {
+                    console.log(response)
                     console.info("Conexión con la API de Discord exitosa")
                     this.token = token;
                     document.querySelector(".glassmorphism").classList.add("hidden")
@@ -101,7 +102,7 @@ class login {
                 }).catch(console.error);
 
         } catch (err) {
-            document.querySelector(".window").innerHTML += "<p class=\"advert\">No ha sido posible conectarse a la API de Discord<br>Comprueba tu conexión a internet</p>"
+            document.querySelector("#msgList").innerHTML += "<p class=\"advert\">No ha sido posible conectarse a la API de Discord<br>Comprueba tu conexión a internet</p>"
             document.querySelector("button.discord").disabled = true
             document.querySelector("button.discord").classList.add("disabled")
             console.warn("No ha sido posible conectarse a la API de Discord")
@@ -135,5 +136,48 @@ class login {
             avatar: this.avatar,
             mail: this.mail
         }, this.guilds)
+    }
+}
+
+class contextmenuBuilder {
+    constructor() {
+        this.x = 0;
+        this.y = 0;
+        this.itemArray = [];
+    };
+    place(x, y) {
+        if (window.innerWidth-280 < x) {
+            this.x = x-270;
+        } else {
+            this.x = x;
+        }
+        this.y = y;
+    };
+    clearItems() {
+        this.itemArray = [];
+    };
+    addItem(i) {
+        this.itemArray.push(i)
+    };
+    setItems(i) {
+        this.itemArray = [...i]
+    };
+    build() {
+        this.element = document.createElement("div")
+        var items = ""
+        this.itemArray.forEach((i) => {
+            items += `<p class="${i.class}" onclick="${i.onclick}">${i.label}</p>`
+        })
+        document.querySelector(".dashboard").appendChild(this.element)
+        this.element.classList.add("contextmenu")
+        this.element.innerHTML = items
+        this.element.style.left = `${this.x}px`
+        this.element.style.top = `${this.y}px`
+    };
+    destroy() {
+        document.querySelector(".dashboard").removeChild(this.element)
+        this.x = 0;
+        this.y = 0;
+        this.element = undefined
     }
 }

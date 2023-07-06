@@ -17,7 +17,7 @@ window.onload = async function () {
     // Intentamos conectarnos a la base de datos, si
     // no lo logramos, devolvemos error en el login.
     try {
-        await indexedDB.startDB("user")
+        await myIndexedDB.startDB("user")
     } catch (err) {
         document.querySelector(".window").innerHTML += "<p class=\"advert\">La base de datos ha fallado y no ha sido posible conectarse a tu cuenta</p>"
         document.querySelector("button.discord").disabled = true
@@ -37,10 +37,10 @@ window.onload = async function () {
 
     // Si existen datos en la base de datos, cargamos en el
     // login los datos de la base de datos.
-    list_length = await indexedDB.listLength("data", 1)
+    list_length = await myIndexedDB.listLength("data", 1)
     if (list_length) {
-        let data_log = await indexedDB.displayData("data")
-        let guilds_log = await indexedDB.displayData("guilds")
+        let data_log = await myIndexedDB.displayData("data")
+        let guilds_log = await myIndexedDB.displayData("guilds")
         await sleep(500)
         log.load(data_log[0], guilds_log)
     }
@@ -150,4 +150,13 @@ function startWindows() {
         await sleep(330)
         document.getElementById("help_window").style.visibility = "hidden"
     })
+}
+
+function copy(TextToCopy) {
+    var TempText = document.createElement("input");
+    TempText.value = TextToCopy;
+    document.body.appendChild(TempText);
+    TempText.select();
+    document.execCommand("copy");
+    document.body.removeChild(TempText);
 }

@@ -26,7 +26,7 @@ const data = {
     }
 }
 
-const indexedDB = {
+const myIndexedDB = {
     db: undefined,
     startDB() {
         return new Promise(async resolve => {
@@ -36,26 +36,26 @@ const indexedDB = {
             };
             request.onsuccess = function () {
                 console.info("Base de datos abierta con éxito");
-                indexedDB.db = request.result;
+                myIndexedDB.db = request.result;
                 resolve()
             };
             request.onupgradeneeded = function (e) {
-                indexedDB.db = e.target.result;
-                indexedDB.addsheet("guilds", [
+                myIndexedDB.db = e.target.result;
+                myIndexedDB.addsheet("guilds", [
                     { name: "name", unique: false },
                     { name: "icon", unique: false },
                     { name: "owner", unique: false },
                     { name: "permissions", unique: false },
                     { name: "features", unique: false }
                 ])
-                indexedDB.addsheet("data", [
+                myIndexedDB.addsheet("data", [
                     { name: "value", unique: false }
                 ])
             };
         })
     },
     addsheet(name, fields) {
-        let objectStore = indexedDB.db.createObjectStore(name, {
+        let objectStore = myIndexedDB.db.createObjectStore(name, {
             keyPath: "id",
             autoIncrement: false,
         });
@@ -65,7 +65,7 @@ const indexedDB = {
         console.info("Configuración de la base de datos completa");
     },
     addElement(sheet, element) {
-        let transaction = indexedDB.db.transaction([sheet], "readwrite");
+        let transaction = myIndexedDB.db.transaction([sheet], "readwrite");
         let objectStore = transaction.objectStore(sheet);
         let request = objectStore.add(element);
         transaction.onerror = function () { console.error("Transacción fallida"); };
@@ -74,7 +74,7 @@ const indexedDB = {
         return new Promise(function (resolve, reject) {
             try {
                 let toShow = []
-                let objectStore = indexedDB.db.transaction(sheet).objectStore(sheet);
+                let objectStore = myIndexedDB.db.transaction(sheet).objectStore(sheet);
                 objectStore.openCursor().onsuccess = function (e) {
                     let cursor = e.target.result;
                     if (cursor) {
@@ -89,7 +89,7 @@ const indexedDB = {
         })
     },
     deleteItem(sheet, id) {
-        let transaction = indexedDB.db.transaction([sheet], "readwrite");
+        let transaction = myIndexedDB.db.transaction([sheet], "readwrite");
         let objectStore = transaction.objectStore(sheet);
         try {
             let request = objectStore.delete(id);
@@ -100,7 +100,7 @@ const indexedDB = {
     },
     async has(sheet, id) {
         return new Promise(async resolve => {
-            const list = await indexedDB.displayData(sheet)
+            const list = await myIndexedDB.displayData(sheet)
             await sleep(500)
             var i = 0
             for (i = 0; i < list.length; i++) {
@@ -114,7 +114,7 @@ const indexedDB = {
     async listLength(sheet, min, max) {
         return new Promise(async function (resolve, reject) {
             if (!sheet) return console.error("Tabla no especificada")
-            const list = await indexedDB.displayData(sheet)
+            const list = await myIndexedDB.displayData(sheet)
             await sleep(500)
             if (!min && !max) {
                 resolve(list.length)
@@ -130,11 +130,11 @@ const indexedDB = {
         })
     },
     async reset(sheet) {
-        const list = await indexedDB.displayData(sheet)
+        const list = await myIndexedDB.displayData(sheet)
         await sleep(500)
         var i = 0
         for (i = 0; i < list.length; i++) {
-            indexedDB.deleteItem(sheet, list[i].id)
+            myIndexedDB.deleteItem(sheet, list[i].id)
         }
     }
 }

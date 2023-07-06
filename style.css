@@ -43,11 +43,40 @@ body {
 }
 
 .window {
-    top: 200px;
+    position: absolute;
+    top: 75px;
+    bottom: 75px;
+    left: 50px;
+    right: 50px;
     background-color: #1f1f1f;
-    width: 500px;
-    padding: 30px 15px;
-    border-radius: 20px;
+    background: linear-gradient(to bottom right, #202831, #171e1f);
+    border-radius: 10px;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0px 0px 20px -5px #000;
+}
+
+.window > .columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 20px;
+    height: 100%;
+}
+
+.window > #msgList {
+    position: absolute;
+    bottom: 40px;
+    width: calc(100% - 40px);
+}
+
+.window > div.columns > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
 }
 
 .window p#catto {
@@ -59,6 +88,7 @@ body {
     font-size: 152px;
     font-weight: bold;
 }
+
 .window p#dashboard {
     position: absolute;
     color: #fff;
@@ -96,16 +126,16 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: #fff;
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 5px 5px;
     outline: none;
-    border-radius: 29px;
+    border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s;
     overflow: hidden;
     border: none;
+    background: transparent;
 }
 
 .window button.disabled {
@@ -120,18 +150,34 @@ body {
 }
 
 .window button.primary {
-    background-color: #5865f2;
+    border: 2px solid #5865f2;
+    color: #5865f2;
 }
 
 .window button.secondary {
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.window button.secondary:hover {
+    border: 2px solid #fff;
+    color: #1f1f1f;
     background-color: #fff;
 }
 
 .window button.primary:hover {
-    background-color: #4f58bf;
+    background-color: #5865f2;
+    color: #fff;
 }
 
 .window .discord svg {
+    height: 35px;
+    width: 50px;
+    fill: #5865f2;
+    transition: all 0.3s;
+}
+
+.window .help svg {
     height: 35px;
     width: 50px;
     fill: #fff;
@@ -139,37 +185,37 @@ body {
 }
 
 
-.window .help svg {
-    height: 35px;
-    width: 50px;
-    fill: #1f1f1f;
-    transition: all 0.3s;
-}
-
-
 .window button.discord:hover svg {
-    opacity: .5;
-    transform: scale(2.5) rotateZ(-15deg) translateX(0px);
+    fill: #fff;
 }
 
 .window button.help:hover svg {
-    transform: rotateZ(360deg);
+    fill: #1f1f1f;
+}
+
+.window button.disabled {
+    border: 2px solid #ed4245;
+    color: #ed4245;
 }
 
 .window button.disabled:hover {
     background-color: #ed4245;
 }
 
+.window .discord.disabled svg {
+    fill: #ed4245;
+}
+
 .window p.advert {
-    background-color: #fee52850;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
-    border: solid 2px #fee528;
-    color: #fff;
-    text-align: center;
+    border: 1px solid #fee52850;
+    border-left: 5px solid #fee528;
+    color: #fee528;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 12px;
+    width: 50%;
 }
 
 /* --- DISPOSICIÓN GENERAL --- */
@@ -252,7 +298,7 @@ body {
     background-color: #35363c;
 }
 
-.servers div.new {
+.servers div.reload {
     background-color: #3a3a3a;
     display: flex;
     flex-direction: row;
@@ -262,18 +308,24 @@ body {
     cursor: pointer;
 }
 
-.servers div.new svg {
-    height: 40px;
-    fill: #23a55a;
+.servers div.reload svg {
+    height: 30px;
+    stroke: #23a55a;
+    transition: all .3s;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3px;
 }
 
-.servers div.new:hover {
+.servers div.reload:hover {
     background-color: #23a55a;
 }
 
-.servers div.new:hover svg {
-    height: 40px;
-    fill: #fff;
+.servers div.reload:hover svg {
+    height: 30px;
+    transform: rotateZ(360deg);
+    stroke: #fff;
 }
 
 

@@ -1,6 +1,6 @@
 const build = {
     servers() {
-        
+
         return new Promise(async function (resolve, reject) {
             if (!data.existe("server")) {
                 data.establecer("server", "settings")
@@ -41,30 +41,68 @@ const build = {
                     procesado.push(`<div ${e.id ? `id="${e.id}"` : ""} draggable="${e.id == "settings" ? "false" : "false"}" onclick="goServer('${e.id}')" ${data.obtener("server") == e.id ? 'class="selected"' : ''}><img draggable="false" src="${e.img.src}" ${e.img.id ? `id="${e.img.id}"` : ""} alt="${e.name}" title="${e.name}"></div>`)
                 }
             })
-            procesado.push('<div class="new"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"></path></svg></div>')
+            procesado.push('<div class="reload" onclick="window.location.reload()"><svg viewBox="0 0 24 24"><path d="M16.519 9.348h4.5v-4.5"></path><path d="M17.831 17.831a8.25 8.25 0 1 1 0-11.662l3.188 3.178"></path></svg></div>')
             document.querySelector(".servers").innerHTML = procesado.join("\n")
 
             resolve()
         });
     },
     contextMenu() {
-        
+
         return new Promise(async function (resolve, reject) {
-            var contextMenu = document.getElementById("ctm");
-            contextMenu.style.visibility = "hidden"
+
             window.oncontextmenu = function (e) {
-                contextMenu.style.visibility = "hidden"
+
+                // Creamos un nuevo menú contextual
+                const ctm = new contextmenuBuilder()
+
                 if (e.target.id.endsWith("_icon")) {
-                    contextMenu.innerHTML = "<p class=\"secondary\">Copiar ID</p>"
-                    contextMenu.style.visibility = "visible"
-                    contextMenu.style.top = `${e.clientY}px`
-                    contextMenu.style.left = `${e.clientX}px`
-                    window.addEventListener("click", function (e) {
-                        if (!contextMenu.contains(e.target)) {
-                            contextMenu.style.visibility = "hidden"
-                            window.removeEventListener("click", this)
+
+                    // Agregamos los elementos del menú
+                    ctm.setItems([
+                        {
+                            class: "secondary closeonclick",
+                            onclick: `copy('${e.target.id.split("_")[0]}')`,
+                            label: "Copiar ID"
                         }
-                    })
+                    ])
+
+                    ctm.place(e.clientX, e.clientY)
+                    ctm.build()
+
+                    var clickHandler = function (e) {
+                        if ((!ctm.element.contains(e.target) || e.target.classList.contains("closeonclick")) && ctm.element) {
+                            ctm.destroy();
+                            window.removeEventListener("click", clickHandler);
+                            window.removeEventListener("contextmenu", clickHandler);
+                        }
+                    };
+                    
+                    window.addEventListener("click", clickHandler);
+                    window.addEventListener("contextmenu", clickHandler);
+
+                } else if (document.getElementById("profile").contains(e.target)) {
+
+                    // Agregamos los elementos del menú
+                    ctm.setItems([
+                        {
+                            class: "danger closeonclick",
+                            onclick: `loggeduser.logOut()`,
+                            label: "Cerrar sesión"
+                        }
+                    ])
+
+                    ctm.place(e.clientX, e.clientY - 50)
+                    ctm.build()
+
+                    var clickHandler = function (e) {
+                        if ((!ctm.element.contains(e.target) || e.target.classList.contains("closeonclick")) && ctm.element) {
+                            ctm.destroy();
+                            window.removeEventListener("click", clickHandler);
+                        }
+                    };
+                    
+                    window.addEventListener("click", clickHandler);
                 }
                 return false
             }
@@ -77,12 +115,12 @@ const build = {
      */
 
     async options(type) {
-        
+
         return new Promise(async function (resolve, reject) {
             const menu = await require("base/builders/menus.json", true)
             document.querySelector(".items").innerHTML = ""
             if (type == "server") {
-                const servers = await indexedDB.displayData("guilds")
+                const servers = await myIndexedDB.displayData("guilds")
                 var useradmin = false;
                 await sleep(100)
                 servers.forEach(server => {
@@ -131,7 +169,7 @@ const build = {
      * @param {Array} msgList
      */
     loginWindow(visible, buttonEnabled, msgList) {
-        
+
         if (!visible) {
             document.querySelector(".glassmorphism").classList.add("hidden")
         } else {
@@ -150,7 +188,7 @@ const build = {
     async pages(type, page) {
         const pages = await require("base/builders/pages.json")
         await sleep(100)
-        if (!pages[type][page]["content"] || pages[type][page]["content"] == "") return
+        if (!pages[type][page]["content"] || pages[type][page]["content"] == "") return document.getElementById("settingsColumn").innerHTML = '<div class="error"><h1>¡Oh no!</h1><p>Esta página no está disponible. Lamentamos las molestias.</p></div>'
         document.getElementById("settingsColumn").innerHTML = pages[type][page]["content"]
     }
 }
